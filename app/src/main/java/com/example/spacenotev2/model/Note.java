@@ -9,7 +9,7 @@ public class Note {
     @PrimaryKey(autoGenerate = true)
     private int postId;
     private String Title;
-    private String subtitle;
+    private String subTitle;
     private String noteBody;
     private String dataTime;
     private String imagePath;
@@ -17,9 +17,9 @@ public class Note {
     private String webLink;
 
     // constructor methods
-    public Note(String title, String subtitle, String noteBody, String dataTime, String imagePath, String color, String webLink) {
+    public Note(String title, String subTitle, String noteBody, String dataTime, String imagePath, String color, String webLink) {
         Title = title;
-        this.subtitle = subtitle;
+        this.subTitle = subTitle;
         this.noteBody = noteBody;
         this.dataTime = dataTime;
         this.imagePath = imagePath;
@@ -40,8 +40,8 @@ public class Note {
         Title = title;
     }
 
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
+    public void setSubtitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 
     public void setNoteBody(String noteBody) {
@@ -74,8 +74,8 @@ public class Note {
         return Title;
     }
 
-    public String getSubtitle() {
-        return subtitle;
+    public String getSubTitle() {
+        return subTitle;
     }
 
     public String getNoteBody() {
