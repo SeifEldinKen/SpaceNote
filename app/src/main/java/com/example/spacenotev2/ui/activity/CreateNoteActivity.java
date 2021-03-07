@@ -2,15 +2,12 @@ package com.example.spacenotev2.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 import com.example.spacenotev2.databinding.ActivityCreateNoteBinding;
 import com.example.spacenotev2.model.Note;
 import com.example.spacenotev2.ui.viewmodel.NoteViewModel;
 import com.example.spacenotev2.ui.viewmodel.NoteViewModelFactory;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -34,20 +31,17 @@ public class CreateNoteActivity extends AppCompatActivity {
         );
 
 
-
         binding.imageViewSave.setOnClickListener((v) -> {
 
             if (checkDataFromUI()) {
                 insertNote();
-                Intent intentNote = new Intent(this, MainActivity.class);
-                startActivity(intentNote);
+                nextActivity();
             }
 
         });
 
 
     }
-
 
     private void initViewModel() {
         noteViewModel = new ViewModelProvider(this, new NoteViewModelFactory(this)).get(NoteViewModel.class);
@@ -69,19 +63,20 @@ public class CreateNoteActivity extends AppCompatActivity {
         );
     }
 
-
     private boolean checkDataFromUI() {
 
-        if (getDataFromUI().getTitle().isEmpty()) {
-            Toast.makeText(this, "Note title can't be empty", Toast.LENGTH_SHORT).show();
-        } else if (getDataFromUI().getSubTitle().isEmpty()) {
-            Toast.makeText(this, "Note can't be empty", Toast.LENGTH_SHORT).show();
-        }
+//        if (getDataFromUI().getTitle().isEmpty()) {
+//            Toast.makeText(this, "Note title can't be empty", Toast.LENGTH_SHORT).show();
+//        } else if (getDataFromUI().getSubTitle().isEmpty()) {
+//            Toast.makeText(this, "Note can't be empty", Toast.LENGTH_SHORT).show();
+//        }
 
-        boolean result = !getDataFromUI().getTitle().isEmpty() && !getDataFromUI().getSubTitle().isEmpty();
+        return !getDataFromUI().getTitle().isEmpty() && !getDataFromUI().getSubTitle().isEmpty();
+    }
 
-
-        return result;
+    private void nextActivity() {
+        Intent intentNote = new Intent(this, MainActivity.class);
+        startActivity(intentNote);
     }
 
 }

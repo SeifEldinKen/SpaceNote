@@ -40,7 +40,7 @@ public class Note {
         Title = title;
     }
 
-    public void setSubtitle(String subTitle) {
+    public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
     }
 

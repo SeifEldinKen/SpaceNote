@@ -10,8 +10,8 @@ import java.util.List;
 
 public class NoteViewModel extends ViewModel {
 
-    private NoteRepository noteRepository;
-    private LiveData<List<Note>> fetchAllNotes;
+    private final NoteRepository noteRepository;
+    private final LiveData<List<Note>> fetchAllNotes;
 
 
     public NoteViewModel(Context context) {
