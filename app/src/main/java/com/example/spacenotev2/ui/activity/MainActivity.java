@@ -1,20 +1,15 @@
 package com.example.spacenotev2.ui.activity;
 
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.example.spacenotev2.R;
 import com.example.spacenotev2.adapter.NotesAdapter;
 import com.example.spacenotev2.databinding.ActivityMainBinding;
 import com.example.spacenotev2.model.Note;
@@ -47,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
     private void initViewModel() {
         noteViewModel = new ViewModelProvider(this, new NoteViewModelFactory(this)).get(NoteViewModel.class);
     }
@@ -59,11 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setupRecyclerView(List<Note> notesList) {
-        NotesAdapter adapter = new NotesAdapter(notesList);
+        // recycler view adapter
+        NotesAdapter adapter = new NotesAdapter(notesList, this);
 
         binding.recyclerViewNotes.setLayoutManager(
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         );
+
         binding.recyclerViewNotes.refreshDrawableState();
         binding.recyclerViewNotes.setAdapter(adapter);
     }
