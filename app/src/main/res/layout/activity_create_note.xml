@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:layout_marginBottom="@dimen/_51sdp"
+        android:layout_marginBottom="@dimen/_105sdp"
         android:paddingBottom="@dimen/_10sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +34,7 @@
                 app:tint="@color/colorIcon" />
 
             <ImageView
-                android:id="@+id/imageViewSave"
+                android:id="@+id/imageViewSaveNote"
                 android:layout_width="@dimen/_20ssp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
@@ -106,6 +106,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/editTextNoteSubtitle" />
 
+            <ImageView
+                android:id="@+id/imageNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/app_name"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNoteSubtitle"/>
+
             <EditText
                 android:id="@+id/editTextNote"
                 android:layout_width="match_parent"
@@ -124,7 +136,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/colorTextHint"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNoteSubtitle"/>
+                app:layout_constraintTop_toBottomOf="@+id/imageNote"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

@@ -1,9 +1,11 @@
 package com.example.spacenotev2.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.spacenotev2.R;
 import com.example.spacenotev2.model.Note;
+import com.makeramen.roundedimageview.RoundedImageView;
+
+import java.io.InputStream;
 import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
@@ -55,8 +60,19 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         }
 
 
+        if (!note.getImagePath().isEmpty()) {
+            holder.roundedImageViewNote.setImageURI(Uri.parse(note.getImagePath()));
+            holder.roundedImageViewNote.setVisibility(View.VISIBLE);
+        }
+
+
+
+
+
         holder.itemView.setOnClickListener(v -> {
-            Toast.makeText(context, note.getColor(), Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(context, String.valueOf(note.getPostId()), Toast.LENGTH_SHORT).show();
+
         });
 
     }
@@ -66,12 +82,17 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         return notesList.size();
     }
 
+    public Note getNote(int position) {
+        return notesList.get(position);
+    }
+
 
     // class view holder
     static class NoteViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewTitle, textViewSubTitle, textViewDataTime;
         LinearLayout layoutNote;
+        RoundedImageView roundedImageViewNote;
 
 
         public NoteViewHolder(@NonNull View itemView) {
@@ -81,7 +102,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             textViewSubTitle = itemView.findViewById(R.id.textViewSubTitle);
             textViewDataTime = itemView.findViewById(R.id.textViewDateTime);
             layoutNote = itemView.findViewById(R.id.layoutNote);
-
+            roundedImageViewNote = itemView.findViewById(R.id.roundedImageViewNote);
         }
 
     }

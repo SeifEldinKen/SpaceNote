@@ -28,8 +28,8 @@ public class Note {
     }
 
     public Note() {
-    }
 
+    }
 
     // setter methods
     public void setPostId(int postId) {
